@@ -11,6 +11,6 @@ lists = helper.get_top10_movie_detail_info_from(urls)
 
 print(lists)
 
-movie1 = pd.DataFrame(data = lists)
+top_10_moive_infos = pd.DataFrame(data=lists)
 
-movie1.to_csv('./week01/top10_movie_infos.csv', encoding='utf_8_sig', index=False, header=False)
+top_10_moive_infos.to_csv('./week01/assignment1/top10_movie_infos.csv', encoding='utf_8', index=False, header=False)
