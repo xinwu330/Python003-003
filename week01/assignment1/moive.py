@@ -1,16 +1,12 @@
 import pandas as pd
 import controller as helper
 
-myurl = 'https://maoyan.com/films?showType=3'
+myurl = 'https://maoyan.com/films'
 
 urls = helper.get_top10_movie_urls_from(myurl)
 
-print(urls)
-
 lists = helper.get_top10_movie_detail_info_from(urls)
-
-print(lists)
 
 top_10_moive_infos = pd.DataFrame(data=lists)
 
-top_10_moive_infos.to_csv('./week01/assignment1/top10_movie_infos.csv', encoding='utf_8', index=False, header=False)
+top_10_moive_infos.to_csv('./top10_movie_infos_01.csv', encoding='utf_8_sig', index=False, header=False)

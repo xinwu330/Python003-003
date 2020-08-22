@@ -12,9 +12,12 @@ def get_top10_movie_urls_from(myurl):
 
     soup_info = soup(response.text, 'html.parser')
 
+    # local debug
+    # soup_info = soup(open("c:\\Users\\Admin\\Documents\\maoyan.html", encoding='UTF-8'), 'html.parser')
+
     #获取前10个电影链接
     urls = []
-    for tags in soup_info.find_all('div', attrs={'class':'movie-item film-channel'},limit=10):
+    for tags in soup_info.find_all('div', attrs={'class':'channel-detail movie-item-title'},limit=10):
         for atag in tags.find_all('a',):
             urls.append(f'https://maoyan.com' + atag.get('href'))
     return urls
@@ -33,14 +36,17 @@ def get_top10_movie_detail_info_from(urls):
 
         soup_info = soup(response.text, 'html.parser')
 
+        # local debug
+        # soup_info = soup(open("c:\\Users\\Admin\\Desktop\\babai.html", encoding='UTF-8'), 'html.parser')
+
         #获取电影名称
         movie_name = soup_info.find('h1', attrs={'class':'name'}).text
 
         #获取电影类型
         movie_type_list = soup_info.find_all('a', attrs={'class':'text-link'})
         movie_types = ''
-        for type in movie_type_list:
-            movie_types += type.text.strip() + ' '
+        for movie_type in movie_type_list:
+            movie_types += movie_type.text.strip() + ' '
 
         #获取电影上映时间
         movie_release_date = soup_info.find_all('li', attrs={'class':'ellipsis'})[-1].text
