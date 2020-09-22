@@ -5,4 +5,8 @@ from .models import Review
 from django.http import HttpResponse
 def index(request):
     reviews = Review.objects.all()
+    q = request.GET.get('q')
+    print("----------------------------------")
+    print(q)
+    print("----------------------------------")
     return render(request, './frontend/index.html', locals())
