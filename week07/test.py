@@ -12,3 +12,21 @@ if __name__ == '__main__':
     z.add_animal(cat1)
     # 动物园是否有猫这种动物
     have_cat = hasattr(z, 'Cat')
+
+
+    # Test
+    # print(have_cat)
+
+    # dog1 = Dog('大黄狗 1', '食肉', '中', '温顺')
+    # z.add_animal(dog1)
+    # have_dog = hasattr(z, 'Dog')
+    # print(have_dog)
+
+    # z.add_animal(cat1)
+
+    # print(z.__dict__)
+    
+    # cat2 = Cat('大花猫 2', '食肉', '小', '温顺')
+    # z.add_animal(cat2)
+    
+    # print(z.__dict__)
