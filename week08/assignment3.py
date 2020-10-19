@@ -1,14 +1,15 @@
-# 实现一个 @timer 装饰器，记录函数的运行时间，注意需要考虑函数可能会接收不定长参数。
+def partial1(func, *args, **keywords):
+    def newfunc(*fargs, **fkeywords):
+        newkeywords = {**keywords, **fkeywords}
+        return func(*args, *fargs, **newkeywords)
+    # newfunc.func = func
+    # # newfunc.args = args
+    # newfunc.keywords = keywords
+    return newfunc
 
-import time
-from functools import wraps
+def multiply(x,y):
+        return x * y
 
-def timer(func):
-    @wraps(func)
-    def get_excution_time(*args, **kwargs):
-        start_time = time.time()
-        v = func(*args, **kwargs)
-        end_time = time.time()
-        print(f'Excuted {func.__name__} takes: {end_time - start_time} seconds')
-        return v
-    return get_excution_time
+# create a new function that multiplies by 2
+dbl = partial1(multiply,2)
+print(dbl(8))
